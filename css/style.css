@@ -56,6 +56,10 @@
     background-color: rgb(109, 149, 230);
 }
 
+.bomb{
+    background-color: red;
+}
+
 .footer-text{
     padding: 15px;
     font-weight: normal;

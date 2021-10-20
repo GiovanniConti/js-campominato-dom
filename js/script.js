@@ -1,18 +1,20 @@
 const selectDifficulty =  document.getElementById("select");
 const btn = document.getElementById("btn-input");
 const grid = document.getElementById("grid");
-let bomb;
+let newBombArray = [];
+const bombsNum = 16;   // => change it to change the ammount of bombs in the game
 
 btn.addEventListener("click", function(){
     difficulty = selectDifficulty.value;
-    console.log(difficulty);
+    // console.log(difficulty);
 
     const cellsNumber = GetCellsNumber(difficulty)
     // console.log(cellsNumber);
 
     GenerateGrid(cellsNumber);
     // function to generate array bomb (generate an array with rundom number that indicates the number of the cells that contain a bomb)
-    bomb = BombArray()
+    newBombArray = BombArray(bombsNum, cellsNumber);
+    console.log(newBombArray);
     
 });
 
@@ -57,54 +59,43 @@ function GenerateGrid(cellsNumber){
         // append "cell" to the html
         grid.append(cell);
 
-        
-
         // call the function once clicked on a cell
         cell.addEventListener("click", OnCellClick);
+
     }
 
 }
 
 // function to give the class "clicked" to a cell
 function OnCellClick(){
-    this.classList.add("clicked");
-    // console.log(this);
-}
 
-function BombArray(){
-    // generate random number between 1 and the number of cells (cellsNumber)
-    const randomNum = Math.floor(Math.random() * cellsNumber + 1);
+    let currentCellNum = parseInt(this.cellNumber);
 
+    if(newBombArray.includes(currentCellNum)){
+        this.classList.add("bomb");
 
-
-}
-
-
-/*
-// soluzione con for e do...while
-for(i=0; i< 16; i++){
-    numeroRandom
-    let esiste = false;
-    do{
-        genera numeroRandom
-        esiste = array.includes(numeroRandom)
-    } while(esist);
-    push numeroRandom dentro array
-}
-*/
-
-/*
-
-function GeneraArrayBombe
-while(array.length < 16){
-    genera numeroRandom
-    esiste = array.includes(numeroRandom)
-
-    if(!esiste){
-        push numeroRandom dentro l'array
+    let clickedArray = document.querySelectorAll(".clicked");
+    // console.log("clicked array", clickedArray);
+    let points = clickedArray.length;
+    console.log("Points:", points);
+        
+    } else{
+        this.classList.add("clicked");
     }
 }
 
-/*
+function BombArray(bombs, maxRandomNum){
+    let bombArray = [];
 
-*/
+    while(bombArray.length < bombs){
+
+        // generate random number between 1 and the number of cells (cellsNumber)
+        const randomNum = Math.floor(Math.random() * maxRandomNum + 1);
+        let exist = bombArray.includes(randomNum);
+
+        if(!exist){
+            bombArray.push(randomNum);
+        }
+    }
+    return bombArray;
+}
