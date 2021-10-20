@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container-header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+}
+
+.header-left{
+    display: flex;
+    align-items: center;
+}
+
+.header-img{
+    margin-right: 15px;
+}
+
+#select{
+    width: 150px;
+}
+
+#btn-input{
+    padding: 0 15px;
+}
+
+.container-main{
+    width: 100%;
+    background-color: rgb(160, 251, 214);
+    padding: 100px 0;
+}
+
+#grid{
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box{
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.clicked{
+    background-color: rgb(109, 149, 230);
+}
+
+.footer-text{
+    padding: 15px;
+    font-weight: normal;
+}
