@@ -17,7 +17,7 @@ btn.addEventListener("click", function(){
     GenerateGrid(cellsNumber, bombsNum);
     // function to generate array bomb (generate an array with random numbers that indicates the number of the cells that contain a bomb)
     newBombArray = BombArray(bombsNum, cellsNumber);
-    // console.log(newBombArray); ==> to see where the bombs are positioned in the grid
+    // console.log(newBombArray);   /* ==> uncomment to see where the bombs are displayed in the grid */
 
 });
 
@@ -86,16 +86,19 @@ function OnCellClick(){
 
     let points = clickedArray.length;
     // console.log("Points:", points);
+    let bombClicked;
 
     if(newBombArray.includes(currentCellNum)){
         this.classList.add("bomb");
-        DisplayOverlay(points, true)
+        bombClicked = true
+        DisplayOverlay(points, bombClicked)
     } else{
         this.classList.add("clicked");
     }
 
     if(points == this.bombfreecells - 1){
-        DisplayOverlay(points, false);
+        bombClicked = false
+        DisplayOverlay(points, bombClicked);
     }
 }
 
@@ -147,7 +150,7 @@ function RemoveOverlay(){
     gameOver.classList.remove("displayed");
 
     const win = document.getElementById("win");
-    win.classList.add("displayed");
+    win.classList.remove("displayed");
 
     // removees the ammount of points gained the previous game
     const score = document.getElementById("score");
