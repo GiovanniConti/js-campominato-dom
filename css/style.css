@@ -33,6 +33,7 @@
     width: 100%;
     background-color: rgb(160, 251, 214);
     padding: 100px 0;
+    position: relative;
 }
 
 #grid{
@@ -58,6 +59,37 @@
 
 .bomb{
     background-color: red;
+}
+
+#resultsOverlay{
+    width: 500px;
+    height: 500px;
+    background: rgba(160, 251, 214, 0.5);
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: -1;
+}
+
+.displayOverlay{
+    z-index: 1!important;
+}
+
+#win{
+    opacity: 0;
+}
+
+#gameOver{
+    opacity: 0;
+}
+
+.displayed{
+    opacity: 1!important;
 }
 
 .footer-text{
