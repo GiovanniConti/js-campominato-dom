@@ -1,3 +1,5 @@
+"use strict"
+
 const selectDifficulty =  document.getElementById("select");
 const btn = document.getElementById("btn-input");
 const grid = document.getElementById("grid");
@@ -5,7 +7,7 @@ let newBombArray = [];
 const bombsNum = 16;   // => change it to change the ammount of bombs in the game
 
 btn.addEventListener("click", function(){
-    difficulty = selectDifficulty.value;
+    const difficulty = selectDifficulty.value;
     // console.log(difficulty);
 
     const cellsNumber = GetCellsNumber(difficulty)
@@ -48,6 +50,7 @@ function GenerateGrid(cellsNumber, bombsNum){
     grid.innerHTML = "";
 
     const cellSize = 100 / Math.sqrt(cellsNumber);
+    let i = 0;
 
     for(i=0; i < cellsNumber; i++){
         //creates the cell(div) and gives the classes and the right dimentions to size the cell
