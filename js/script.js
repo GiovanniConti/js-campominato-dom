@@ -50,9 +50,8 @@ function GenerateGrid(cellsNumber, bombsNum){
     grid.innerHTML = "";
 
     const cellSize = 100 / Math.sqrt(cellsNumber);
-    let i = 0;
 
-    for(i=0; i < cellsNumber; i++){
+    for(let i=0; i < cellsNumber; i++){
         //creates the cell(div) and gives the classes and the right dimentions to size the cell
         const cell = document.createElement("div");
         
@@ -92,7 +91,8 @@ function OnCellClick(){
     let bombClicked;
 
     if(newBombArray.includes(currentCellNum)){
-        this.classList.add("bomb");
+        // this.classList.add("bomb");
+        ShowAllBombs();
         bombClicked = true
         DisplayOverlay(points, bombClicked)
     } else{
@@ -158,4 +158,13 @@ function RemoveOverlay(){
     // removees the ammount of points gained the previous game
     const score = document.getElementById("score");
     score.innerHTML  = "";
+}
+
+function ShowAllBombs(){
+    const cellsList = document.querySelectorAll(".box");
+
+    for (let i=0; i < newBombArray.length; i++){
+        const bomb = newBombArray[i];
+        cellsList[bomb - 1].classList.add("bomb");
+    }
 }
